@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  cache:
+    image: bitnami/redis:6.2.14
+    container_name: redis_1
+    ports:
+      - "6379:6379"
+    environment:
+      ALLOW_EMPTY_PASSWORD: 'yes'
+    volumes:
+      - ./redis-data:/data
+    restart: always
+    networks:
+      - cache
+networks:
+  cache:
+    driver: bridge
+
